@@ -1,0 +1,61 @@
+GENERAL REGISTERS:
+4 types of registers
+	general purpose Ex. 1
+		8 gen reg: eax, ebx, ecx, edx, esi, edi, ebp, esp
+		(each has 16 bit versions consisting of no E)
+		(each 16 bit has a 8 bit of Low and High [ EAX AX AL AH ])
+	special purpose application accessible
+	segment registers
+		are not used much by bsd/mac/win/lin
+	special purpose kernel mode
+		OS level (lower ring)
+	EFLAGS register (32 bit) Ex. 2
+		several single bit boolean values
+		(mostly for kernel mode programming)
+		(8 bits [flags] are for application devs)
+			overflow, direction, interrrupt disable, sign zero, auxiliary carry, 
+			parity, and carry flags.
+		Condition code:
+			overflow, carry, sign, & zero flags
+				these are used to test previous computations
+	special registers:
+		stack pointer:
+			ESP (AKA SP)
+		base pointer:
+			EBP (AKA BP)
+application programs cannot modify the interrupt flag.
+
+Ex.1 General Register:
+__________________________
+EAX_______________________| 32 bit
+	      |_____AX____| 16 bit
+	      | AH   |	AL|  8 bit
+---------------------------
+
+Ex.2 EFLAGS application flags
+_________________________________________________
+|15|14|13|12|11|10|09|08|07|06|05|04|03|02|01|00|
+              |  |     |  |  |     |     |     |
+	      |  |     |  |  |     |     |     |
+overflow______*  |     |  |  |     |     |     |
+direction________*     |  |  |     |     |     |
+interrupt disable______*  |  |     |     |     |
+sign______________________*  |     |     |     | 
+zero_________________________*     |     |     |
+auxiliary carry____________________*     |     |
+parity___________________________________*     |
+carry__________________________________________*
+
+
+
+The memory subsystems
+	32 bit memory address space is 4 GB (byte-addressable memory)
+	byte addressable memory:
+		basic unit of memory is a byte 
+			single character or a small interger
+		byte, word, double word
+			8 bits, 2 bytes, 4 bytes
+ simple instructions
+	MOV
+		move source, desistination
+

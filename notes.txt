@@ -1,0 +1,34 @@
+; this is a comment
+
+    The data section,
+
+    The bss section, and
+
+    The text section.
+
+	section.data
+	section.bss
+	section.text
+	   global _start
+	_start:
+
+
+
+
+    Executable instructions or instructions,
+    Assembler directives or pseudo-ops, and
+    Macros.
+
+each instruction consists of an operation code (op code) and produces one machine language instruction
+
+assembler directives are pseudo code and are non-executable and do not generate machine language instructions.
+
+basic like syntax:
+[label]   mnemonic   [operands]   [;comment]
+
+[these are optional]
+
+
+to compile:
+nasm -f elf hello.asm
+ld -m elf_i386 -s -o hello hello.o
